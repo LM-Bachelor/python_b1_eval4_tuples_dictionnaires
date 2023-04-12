@@ -8,25 +8,25 @@ import json
 # - date de naissance au format jj/mm/aaaa
 # - couleur préférée
 # La saisie devra se faire au sein du terminal, à tout moment l'utilisateur pourra quitter la saisie en tapant le mot clé "stop"
-survey = []
-while 1 :
-    lastname = input("Nom :")
-    if lastname == "stop": break
-    firstname = input("Prénom :")
-    if firstname == "stop": break
-    date_of_birth = input("Date de naissance :")
-    if date_of_birth == "stop": break
-    color_prefered = input("Couleur préférée :")
-    if color_prefered == "stop": break
+# survey = []
+# while True :
+#     lastname = input("Nom :")
+#     if lastname == "stop": break
+#     firstname = input("Prénom :")
+#     if firstname == "stop": break
+#     date_of_birth = input("Date de naissance :")
+#     if date_of_birth == "stop": break
+#     color_prefered = input("Couleur préférée :")
+#     if color_prefered == "stop": break
 
     # 2. Vous stockerez toutes ces informations dans un dictionnaire et vous l'ajouterez dans une liste « students »
-    data = {
-        "lastname": lastname,
-        "firstname": firstname,
-        "date_of_birth": date_of_birth,
-        "color_prefered": color_prefered
-    }
-    survey.append(data)
+    # data = {
+    #     "lastname": lastname,
+    #     "firstname": firstname,
+    #     "date_of_birth": date_of_birth,
+    #     "color_prefered": color_prefered
+    # }
+    # survey.append(data)
 
 # # 3. Afin de garder ses information en mémoire, vous convertirez la liste en json l’enregistrerez dans un fichier « survey.json »
 # with open("survey.json", "w") as data:
@@ -50,8 +50,11 @@ while stop == False :
             data['pets'] = int(input("Nombre d'animaux domestiques : "))
 
         # 5.La question « Combien d’animaux domestiques possède-vous ? » devra être posée tant que vous n’aurez pas récolté cette information pour tout le monde
-        if data.__contains__('pets') == False :
-            stop = False
+        # if data.__contains__('pets') == False :
+        #     stop = False
+        for info in survey:
+            if not('pets' in info.keys()):
+                stop = False
 
 with open("survey.json", "w") as data:
     json.dump(survey, data)
